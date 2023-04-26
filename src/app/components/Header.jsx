@@ -36,7 +36,7 @@ const Header = () => {
   // // console.log(data);
   // if (isLoading) return <div> loadig..</div>;
   // if (error) return <div> Error</div>;
-  console.log(que);
+  // console.log(que);
   return (
     <>
         <header className="header_div">
