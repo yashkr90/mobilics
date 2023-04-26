@@ -10,12 +10,13 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PaginationItem from "@mui/material/PaginationItem";
 import { useRouter } from "next/navigation";
 import { usePage } from "@/store/store";
+import { shallow } from "zustand/shallow";
 
 const Footer = () => {
   const router = useRouter();
 
   const page = usePage((state) => state.page);
-  const updatePage = usePage((state) => state.updatePage);
+  const updatePage = usePage((state) => (state.updatePage));
 
   // const [page, setPage] = useState(1);
   const handleChange = async(event, value) => {
@@ -32,17 +33,17 @@ console.log("the value is",value);
   return (
     <>
       <footer 
-      // style={{position:"absolute",left:0,bottom:0,right:0}}
+      style={{position:"absolute",bottom:0}}
       >
         {/* the page is {page} */}
         <Stack spacing={2}>
           {/* <Link href={`/tables/${page}`}> */}
           <Pagination
             count={5}
-            page={page}
+            page={Number(page)}
             size="large"
             onChange={handleChange}
-            // defaultPage={1}
+            defaultPage={page}
             renderItem={(item) => (
               <PaginationItem
                 slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
