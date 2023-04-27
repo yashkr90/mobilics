@@ -8,6 +8,7 @@ import MUIDataTable from "mui-datatables";
 
 // const URL = "http://localhost:8000";
 const URL = process.env.URL;
+console.log
 
 const fetcher = (path) => fetch(`${URL}/${path}`).then((res) => res.json());
 
@@ -27,7 +28,7 @@ const Page = (params) => {
 
   if (error) return <div>failed to load</div>;
   if (isLoading)
-    return <Skeleton variant="rectangular" height={500}></Skeleton>;
+    return <div>Loading...</div>
   const users = data;
 
   const rows = users.map((currEl, i) => {
