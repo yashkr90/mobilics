@@ -3,12 +3,11 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "../styles/datatable.css";
-import { Scrollbars } from "react-custom-scrollbars-2";
+
 import { motion } from "framer-motion";
 import MUIDataTable from "mui-datatables";
 import { ThemeProvider, createTheme } from "@mui/material";
-import { InfoRounded } from "@mui/icons-material";
-import TableCell from "@mui/material/TableCell";
+
 import { EnvelopeFill, ChatQuoteFill } from "react-bootstrap-icons";
 import { MdPerson, MdOutlineFormatListNumbered } from "react-icons/md";
 import { BiMaleFemale, BiDollar } from "react-icons/bi";
@@ -40,81 +39,6 @@ const theme = createTheme({
   },
 });
 
-// const theme1 = createTheme({
-//   styleOverrides: {
-//     MuiCssBaseline: {
-//       '@global': {
-//         '*::-webkit-scrollbar': {
-//           width: '8px',
-//           height: '8px',
-//         },
-//         '*::-webkit-scrollbar-track': {
-//           background: 'inherit',
-//           boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
-//         },
-//         '*::-webkit-scrollbar-thumb': {
-//           backgroundColor: "red",
-//           borderRadius: '20px',
-//           // border: header,
-//         },
-//         '*::-webkit-scrollbar-corner': {
-//           background: 'inherit',
-//         },
-//       },
-//     },
-//   },
-//   }
-// );
-
-// import { Scrollbars } from 'react-custom-scrollbars';
-
-// const columns = [
-//   { field: 'id', headerName: 'ID', width: 70 },
-//   { field: 'firstName', headerName: 'First name', width: 130 },
-//   { field: 'lastName', headerName: 'Last name', width: 130 },
-//   {
-//     field: 'age',
-//     headerName: 'Age',
-//     type: 'number',
-//     width: 90,
-//   },
-//   {
-//     field: 'fullName',
-//     headerName: 'Full name',
-//     description: 'This column has a value getter and is not sortable.',
-//     sortable: false,
-//     width: 160,
-//     valueGetter: (params) =>
-//       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-//   },
-// ];
-
-// const rows = [
-//   { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-//   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-//   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-//   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-//   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-//   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-//   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-//   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-//   { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-// ];
-// const renderThumb = ({ style, ...props }) => {
-//   const thumbStyle = {
-//     borderRadius: 6,
-//     backgroundColor: 'rgba(35, 49, 86, 0.8)'
-//   };
-//   return <div style={{ ...style, ...thumbStyle }} {...props} />;
-// };
-
-// const CustomScrollbars = props => (
-//   <Scrollbars
-//     renderThumbHorizontal={renderThumb}
-//     renderThumbVertical={renderThumb}
-//     {...props}
-//   />
-// );
 const headerIcon = {
   fullname: <MdPerson />,
   email: <EnvelopeFill />,
@@ -132,20 +56,14 @@ const options = {
   selectableRowsHeader: false,
   selectableRows: "none",
   print: false,
-  // viewColumns:false,
-  // display:"excluded",
   download: false,
   filter: false,
-  // borderRadius: "50px",
   tableBodyHeight: "400px",
   tableBodyMaxHeight: "400px",
   onTableChange: (action, state) => {
     console.log(action);
     console.dir(state);
   },
-  // customRowRender:(data, dataIndex, rowIndex) => {
-  //   console.log(data);
-  // }
 };
 
 export default function DataTable({ rows, columns }) {
@@ -222,8 +140,6 @@ export default function DataTable({ rows, columns }) {
                 data={rows}
                 columns={datas}
                 options={options}
-                // pageSize={5}
-                // rowsPerPageOptions={[5]}
               />
             </motion.div>
           </div>

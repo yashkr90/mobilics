@@ -10,7 +10,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PaginationItem from "@mui/material/PaginationItem";
 import { useRouter } from "next/navigation";
 import { usePage } from "@/store/store";
-import { shallow } from "zustand/shallow";
+
 
 const Footer = () => {
   const router = useRouter();
@@ -27,6 +27,7 @@ console.log("the value is",value);
     await updatePage(value);
 
     console.log("page in store ", usePage.getState().page);
+    
     router.push(`/tables/${usePage.getState().page}`);
   };
 

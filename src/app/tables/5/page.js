@@ -8,7 +8,6 @@ const URL = "http://localhost:8000";
 
 const fetcher = (path) => fetch(`${URL}/${path}`).then((res) => res.json());
 
-
 const Page = (params) => {
   const URL = process.env.URL;
   console.log(params);
@@ -22,13 +21,11 @@ const Page = (params) => {
   // const res = await fetch(`${URL}/data${page}`);
   // const users = await res.json();
   const { data, error, isLoading } = useSWR(`data${pagenum}`, fetcher);
- 
- 
+
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   const users = data;
-  
-  
+
   const rows = users.map((currEl, i) => {
     return { ...currEl, id: currEl.city, slno: i + 1 };
   });
@@ -37,26 +34,15 @@ const Page = (params) => {
     {
       name: "slno",
       label: "Sl no",
-      // align:"center",
-      // headerAlign:"center",
-      // width:150
     },
 
     {
       name: "city",
       label: "City",
-      // flex:1,
-      // // width:200,
-      // align:"center",
-      // headerAlign:"center",
     },
     {
       name: "average_income",
       label: "Average income",
-      // flex:1,
-      // // width:500,
-      // align:"center",
-      // headerAlign:"center"
     },
   ];
 
