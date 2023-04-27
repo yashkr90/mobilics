@@ -3,8 +3,11 @@
 import DataTable from "@/app/components/Datatable";
 import { usePage } from "@/store/store";
 import useSWR from "swr";
+import Skeleton from "@mui/material/Skeleton";
+import MUIDataTable from "mui-datatables";
 
-const URL = "http://localhost:8000";
+// const URL = "http://localhost:8000";
+const URL = process.env.URL;
 
 const fetcher = (path) => fetch(`${URL}/${path}`).then((res) => res.json());
 
@@ -23,7 +26,8 @@ const Page = (params) => {
   const { data, error, isLoading } = useSWR(`data${pagenum}`, fetcher);
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading)
+    return <Skeleton variant="rectangular" height={500}></Skeleton>;
   const users = data;
 
   const rows = users.map((currEl, i) => {

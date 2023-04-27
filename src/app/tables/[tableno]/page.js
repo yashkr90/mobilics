@@ -4,9 +4,10 @@ import DataTable from "@/app/components/Datatable";
 import { usePage } from "@/store/store";
 import useSWR from "swr";
 import { use } from "react";
+import Skeleton from "@mui/material/Skeleton";
 
-// const URL = process.env.URL;
-const URL = "http://localhost:8000";
+const URL = process.env.URL;
+// const URL = "http://localhost:8000";
 
 const fetcher = (path) => fetch(`${URL}/${path}`).then((res) => res.json());
 
@@ -30,7 +31,7 @@ const Page = ({ params }) => {
   // const users = fetchdata(pagenum).then((res)=> {return res});
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <div><Skeleton variant="rectangular" width={210} height={60}></Skeleton></div>;
   const users = data;
   // console.log("users are", users);
   // const res = await fetch(`${URL}/data${page}`);
