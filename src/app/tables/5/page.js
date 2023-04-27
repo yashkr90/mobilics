@@ -7,8 +7,8 @@ import Skeleton from "@mui/material/Skeleton";
 import MUIDataTable from "mui-datatables";
 
 // const URL = "http://localhost:8000";
-const URL = process.env.URL;
-console.log
+const URL = process.env.NEXT_PUBLIC_URL;
+
 
 const fetcher = (path) => fetch(`${URL}/${path}`).then((res) => res.json());
 
